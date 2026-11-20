@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rafid — A Conversation With Becoming</title>
+    <meta
+      name="description"
+      content="Rafid — Backend-focused Software Engineer. An interactive dark 3D portfolio exploring identity, system design, engineering work, business operations, and continuous becoming."
+    />
+    <meta property="og:title" content="Rafid — A Conversation With Becoming" />
+    <meta
+      property="og:description"
+      content="An interactive 3D storytelling portfolio of Rafid, Backend-focused Software Engineer."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.187.0/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div
+      id="loading-screen"
+      class="loading-screen"
+      role="status"
+      aria-live="polite"
+      aria-label="Loading 3D environment"
+    >
+      <div class="loading-inner">
+        <p class="loading-title">A Conversation With Becoming</p>
+        <div class="loading-bar-track">
+          <div id="loading-bar-fill" class="loading-bar-fill"></div>
+        </div>
+        <p id="loading-percent" class="loading-percent">0%</p>
+      </div>
+    </div>
+
+    <!-- Isolated WebGL Canvas Container -->
+    <div id="webgl-mount" class="webgl-mount" aria-hidden="true"></div>
+
+    <!-- WebGL Fallback Surface -->
+    <div
+      id="webgl-fallback"
+      class="webgl-fallback hidden"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Top Navigation Bar -->
+    <header class="top-bar">
+      <div class="top-bar-inner">
+        <button type="button" class="brand-btn" data-nav="hero">RAFID</button>
+
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <button type="button" class="nav-link" data-nav="philosophy">Philosophy</button>
+          <button type="button" class="nav-link" data-nav="skills">Skills</button>
+          <button type="button" class="nav-link" data-nav="projects">Projects</button>
+          <button type="button" class="nav-link" data-nav="business">Business</button>
+          <button type="button" class="nav-link" data-nav="leadership">Leadership</button>
+          <button type="button" class="nav-link" data-nav="timeline">Archive</button>
+        </nav>
+
+        <div class="top-bar-actions">
+          <button type="button" class="nav-cta" data-nav="contact">Contact</button>
+          <button
+            type="button"
+            id="mobile-menu-toggle"
+            class="mobile-menu-toggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mobile-nav"
+          >
+            <span class="menu-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+
+      <nav id="mobile-nav" class="mobile-nav hidden" aria-label="Mobile sections">
+        <button type="button" class="mobile-nav-item" data-nav="hero">
+          <span>Identity</span><span class="num">01</span>
+        </button>
+        <button type="button" class="mobile-nav-item" data-nav="philosophy">
+          <span>Engineering Philosophy</span><span class="num">02</span>
+        </button>
+        <button type="button" class="mobile-nav-item" data-nav="skills">
+          <span>Technical Skills</span><span class="num">03</span>
+        </button>
+        <button type="button" class="mobile-nav-item" data-nav="projects">
+          <span>Projects</span><span class="num">04</span>
+        </button>
+        <button type="button" class="mobile-nav-item" data-nav="business">
+          <span>Business &amp; Operations</span><span class="num">05</span>
+        </button>
+        <button type="button" class="mobile-nav-item" data-nav="leadership">
+          <span>Leadership &amp; Publication</span><span class="num">06</span>
+        </button>
+        <button type="button" class="mobile-nav-item" data-nav="timeline">
+          <span>Timeline &amp; Memory Archive</span><span class="num">07</span>
+        </button>
+        <button type="button" class="mobile-nav-item" data-nav="contact">
+          <span>Contact &amp; Future</span><span class="num">08</span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Fixed Interactive Question & Answer Narrative Stage -->
+    <main class="overlay-stage">
+      <div class="overlay-container">
+        <!-- CHAPTER 01: IDENTITY -->
+        <section
+          id="panel-hero"
+          class="scene-panel scene-panel-left"
+          aria-labelledby="hero-question"
+        >
+          <div class="card card-hero">
+            <div class="qa-question-block">
+              <p class="qa-chapter num">Chapter 01 · Identity</p>
+              <h1 id="hero-question" class="qa-question">
+                “Who are you, beyond the name you carry?”
+              </h1>
+            </div>
+
+            <div class="qa-answer-statement">
+              <div class="qa-divider" aria-hidden="true"></div>
+              <p class="hero-name">RAFID</p>
+              <p class="hero-role">Backend-focused Software Engineer</p>
+              <p class="hero-bio">
+                I'm a Backend-focused Software Engineer interested in
+                understanding systems deeply, designing reliable architectures,
+                and building scalable applications across backend development,
+                software engineering principles, and problem solving.
+              </p>
+            </div>
+
+            <div class="qa-real-content">
+              <p class="hero-tagline">
+                Understanding systems. Building foundations. Exploring possibilities.
+              </p>
+
+              <div class="hero-actions">
+                <button type="button" class="btn-primary" data-nav="philosophy">
+                  Explore My Journey
+                </button>
+                <button type="button" class="btn-secondary" data-nav="projects">
+                  View My Work
+                </button>
+              </div>
+              <div class="hero-footer">
+                <button type="button" class="scroll-cue" data-nav="philosophy">
+                  <span>Continue along the path</span>
+                  <span aria-hidden="true">↓</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CHAPTER 02: ENGINEERING PHILOSOPHY & THE THINKING ROOM -->
+        <section
+          id="panel-philosophy"
+          class="scene-panel scene-panel-left"
+          aria-labelledby="philosophy-question"
+          hidden
+        >
+          <div class="card card-philosophy" data-ui-interactive="true">
+            <div class="qa-question-block">
+              <p class="qa-chapter num">Chapter 02 · Engineering Philosophy</p>
+              <h2 id="philosophy-question" class="qa-question">
+                “What makes a system truly reliable?”
+              </h2>
+            </div>
+
+            <div class="qa-answer-statement">
+              <div class="qa-divider" aria-hidden="true"></div>
+              <p>
+                Good software is more than something that works. It requires
+                thoughtful design, sound engineering principles, problem-solving,
+                and an understanding of how individual components work together.
+              </p>
+            </div>
+
+            <div class="qa-real-content">
+              <div class="philosophy-section">
+                <p class="section-kicker">Core Interests</p>
+                <ul class="interest-grid">
+                  <li>Backend Engineering</li>
+                  <li>System Design</li>
+                  <li>Software Engineering Principles</li>
+                  <li>Problem Solving</li>
+                  <li>Competitive Programming</li>
+                  <li>Rational Thinking</li>
+                </ul>
+              </div>
+
+              <div class="thinking-room-box">
+                <div class="card-header-row">
+                  <span class="section-kicker">The Thinking Room</span>
+                  <span class="helper-hint">Reflections</span>
+                </div>
+                <div
+                  id="thinking-tabs"
+                  class="tab-row"
+                  role="tablist"
+                  aria-label="Thinking Room reflections"
+                ></div>
+                <blockquote id="thinking-quote" class="thinking-quote"></blockquote>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CHAPTER 03: TECHNICAL SKILLS -->
+        <section
+          id="panel-skills"
+          class="scene-panel scene-panel-right"
+          aria-labelledby="skills-question"
+          hidden
+        >
+          <div class="card card-skills" data-ui-interactive="true">
+            <div class="qa-question-block">
+              <p class="qa-chapter num">Chapter 03 · Technical Skills</p>
+              <h2 id="skills-question" class="qa-question">
+                “What happens beneath the interface?”
+              </h2>
+            </div>
+
+            <div class="qa-answer-statement">
+              <div class="qa-divider" aria-hidden="true"></div>
+              <p>
+                Behind every useful application are systems responsible for
+                processing information, managing data, and connecting different
+                components reliably.
+              </p>
+            </div>
+
+            <div class="qa-real-content">
+              <div class="card-header-row">
+                <span class="section-kicker">Connected System Layers</span>
+                <span class="helper-hint">Select a 3D ring or category</span>
+              </div>
+              <div
+                id="skill-tabs"
+                class="tab-row"
+                role="tablist"
+                aria-label="Skill categories"
+              ></div>
+              <div class="tab-content">
+                <h3 id="active-skill-title" class="serif-subheading"></h3>
+                <ul id="active-skill-list" class="skill-grid"></ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CHAPTER 04: PROJECTS -->
+        <section
+          id="panel-projects"
+          class="scene-panel scene-panel-projects"
+          aria-labelledby="projects-question"
+          hidden
+        >
+          <div class="projects-top-note">
+            <div class="qa-question-block">
+              <p class="qa-chapter num">Chapter 04 · Projects</p>
+              <h2 id="projects-question" class="qa-question qa-question-compact">
+                “How does an idea become a working system?”
+              </h2>
+            </div>
+            <div class="qa-answer-statement">
+              <div class="qa-divider qa-divider-compact" aria-hidden="true"></div>
+              <p>
+                An idea becomes meaningful when it is translated into something
+                people can actually use.
+              </p>
+            </div>
+          </div>
+
+          <div class="card card-project qa-real-content" data-ui-interactive="true">
+            <div
+              id="project-tabs"
+              class="tab-row"
+              role="tablist"
+              aria-label="Projects"
+            ></div>
+            <div class="project-body">
+              <div class="card-header-row">
+                <h3 id="project-name" class="serif-subheading"></h3>
+                <span id="project-counter" class="num helper-hint"></span>
+              </div>
+              <p id="project-desc" class="project-desc"></p>
+              <div class="project-meta-row">
+                <p id="project-tech" class="project-tech"></p>
+                <div class="project-links">
+                  <a
+                    id="project-github"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="ext-link"
+                  >
+                    <span>GitHub</span><span aria-hidden="true">↗</span>
+                  </a>
+                  <a
+                    id="project-live"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="ext-link ext-link-muted"
+                  >
+                    <span>Live</span><span aria-hidden="true">↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CHAPTER 05: BUSINESS & OPERATIONS -->
+        <section
+          id="panel-business"
+          class="scene-panel scene-panel-right"
+          aria-labelledby="business-question"
+          hidden
+        >
+          <div class="card card-business">
+            <div class="qa-question-block">
+              <p class="qa-chapter num">Chapter 05 · Business &amp; Operations</p>
+              <h2 id="business-question" class="qa-question">
+                “How does systems thinking apply beyond writing code?”
+              </h2>
+            </div>
+
+            <div class="qa-answer-statement">
+              <div class="qa-divider" aria-hidden="true"></div>
+              <p>
+                Real operations depend on reliable software administration,
+                structured trade documentation, and disciplined execution that
+                helps a business grow.
+              </p>
+            </div>
+
+            <div class="qa-real-content">
+              <div class="current-role-banner">
+                <div>
+                  <p class="section-kicker">Business Associate</p>
+                  <p class="current-role-title">Drops</p>
+                  <p class="current-role-org">Sanitary Goods Importer</p>
+                </div>
+                <span class="status-tag">Operations</span>
+              </div>
+
+              <ul class="milestone-list">
+                <li>Managing the company's software administration and operational tools.</li>
+                <li>Assisting with export and import documentation workflows.</li>
+                <li>Supporting commercial operations to help increase business revenue.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- CHAPTER 06: LEADERSHIP AND PUBLICATION -->
+        <section
+          id="panel-leadership"
+          class="scene-panel scene-panel-left"
+          aria-labelledby="leadership-question"
+          hidden
+        >
+          <div class="card card-leadership" data-ui-interactive="true">
+            <div class="qa-question-block">
+              <p class="qa-chapter num">Chapter 06 · Leadership &amp; Publication</p>
+              <h2 id="leadership-question" class="qa-question">
+                “What can we create when knowledge becomes collective effort?”
+              </h2>
+            </div>
+
+            <div class="qa-answer-statement">
+              <div class="qa-divider" aria-hidden="true"></div>
+              <p>
+                Leadership is not only about responsibility. It is also about
+                helping ideas become shared accomplishments.
+              </p>
+            </div>
+
+            <div class="qa-real-content">
+              <div class="current-role-banner">
+                <div>
+                  <p class="section-kicker">Current Role</p>
+                  <p class="current-role-title">Development Secretary</p>
+                  <p class="current-role-org">Software Engineering Club</p>
+                </div>
+                <span class="status-tag">Active</span>
+              </div>
+
+              <div class="publication-card">
+                <div class="publication-folio-spine" aria-hidden="true">
+                  <span class="num">VOL. I</span>
+                </div>
+                <div class="publication-details">
+                  <p class="section-kicker">Editorial Publication</p>
+                  <h3 class="publication-title">SWEOrbit — Club Magazine</h3>
+                  <p class="publication-status">
+                    Status: Completed and Published
+                  </p>
+                </div>
+              </div>
+
+              <div class="leadership-block">
+                <p class="section-kicker">Leadership Progression</p>
+                <div id="leadership-timeline" class="vertical-timeline"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CHAPTER 07: INTERACTIVE TIMELINE & MEMORY ARCHIVE -->
+        <section
+          id="panel-timeline"
+          class="scene-panel scene-panel-right"
+          aria-labelledby="timeline-question"
+          hidden
+        >
+          <div class="card card-archive" data-ui-interactive="true">
+            <div class="qa-question-block">
+              <p class="qa-chapter num">Chapter 07 · Timeline &amp; Memory Archive</p>
+              <h2 id="timeline-question" class="qa-question">
+                “How do separate moments form a single trajectory?”
+              </h2>
+            </div>
+
+            <div class="qa-answer-statement">
+              <div class="qa-divider" aria-hidden="true"></div>
+              <p>
+                Every milestone, build, and responsibility leaves a trace along
+                the path—connecting past effort to ongoing work.
+              </p>
+            </div>
+
+            <div class="qa-real-content">
+              <div class="archive-mode-bar" role="tablist" aria-label="Archive views">
+                <button
+                  type="button"
+                  role="tab"
+                  class="tab-btn is-active"
+                  id="mode-timeline-btn"
+                  aria-selected="true"
+                >
+                  Interactive Timeline
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  class="tab-btn"
+                  id="mode-memory-btn"
+                  aria-selected="false"
+                >
+                  Memory Archive
+                </button>
+              </div>
+
+              <!-- Timeline View -->
+              <div id="view-timeline" class="archive-view">
+                <div id="timeline-year-tabs" class="tab-row" role="tablist" aria-label="Milestone years"></div>
+                <div class="timeline-year-body">
+                  <div class="card-header-row">
+                    <h3 id="timeline-year-heading" class="serif-subheading num"></h3>
+                    <span class="helper-hint">Synced with 3D trajectory</span>
+                  </div>
+                  <ul id="timeline-milestones-list" class="milestone-list"></ul>
+                </div>
+              </div>
+
+              <!-- Memory Archive View -->
+              <div id="view-memory" class="archive-view hidden">
+                <div id="memory-tabs" class="tab-row" role="tablist" aria-label="Memory artifacts"></div>
+                <div class="memory-body">
+                  <div class="card-header-row">
+                    <h3 id="memory-title" class="serif-subheading"></h3>
+                    <span id="memory-category" class="helper-hint num"></span>
+                  </div>
+                  <p id="memory-summary" class="project-desc"></p>
+                  <ul id="memory-details" class="milestone-list"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CHAPTER 08: CONTACT, FUTURE & VISITOR INTERACTION -->
+        <section
+          id="panel-contact"
+          class="scene-panel scene-panel-center"
+          aria-labelledby="contact-question"
+          hidden
+        >
+          <div class="card card-contact" data-ui-interactive="true">
+            <div class="qa-question-block">
+              <p class="qa-chapter num">Chapter 08 · Contact &amp; Future</p>
+              <h2 id="contact-question" class="qa-question">
+                “If engineering is the process of solving problems, which problems are still worth exploring?”
+              </h2>
+            </div>
+
+            <div class="qa-answer-statement">
+              <div class="qa-divider" aria-hidden="true"></div>
+              <p>
+                I'm continuing to learn, experiment, and build. My journey in
+                software engineering is still evolving.
+              </p>
+            </div>
+
+            <div class="qa-real-content">
+              <div class="contact-actions">
+                <a href="mailto:rafid.islam.swe@gmail.com" class="btn-primary">
+                  rafid.islam.swe@gmail.com
+                </a>
+                <nav class="social-links" aria-label="Social links">
+                  <a
+                    href="https://github.com/Rafidul-Islam/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub <span aria-hidden="true">↗</span>
+                  </a>
+                  <span aria-hidden="true">·</span>
+                  <a
+                    href="https://www.linkedin.com/in/rafidul-islam-a2860b2a5/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    LinkedIn <span aria-hidden="true">↗</span>
+                  </a>
+                  <span aria-hidden="true">·</span>
+                  <a
+                    href="https://instagram.com/rafinnaaa"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Instagram <span aria-hidden="true">↗</span>
+                  </a>
+                  <span aria-hidden="true">·</span>
+                  <a
+                    href="https://www.facebook.com/rafidul.islam.9026"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Facebook <span aria-hidden="true">↗</span>
+                  </a>
+                </nav>
+              </div>
+
+              <div class="visitor-reflection-box">
+                <p class="visitor-prompt">
+                  “What do you think defines a person most?”
+                </p>
+                <div id="visitor-options" class="visitor-options"></div>
+                <p id="visitor-response" class="visitor-response hidden"></p>
+              </div>
+
+              <p class="final-statement">
+                “Perhaps we are never finished becoming.”
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Classical Sound Theme Control -->
+    <button
+      type="button"
+      id="sound-toggle"
+      class="sound-toggle"
+      aria-pressed="false"
+      aria-label="Toggle classical sound theme"
+      title="Classical chamber theme"
+    >
+      <svg
+        id="sound-icon-off"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.75"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+        <line x1="22" y1="9" x2="16" y2="15" />
+        <line x1="16" y1="9" x2="22" y2="15" />
+      </svg>
+      <svg
+        id="sound-icon-on"
+        class="hidden"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.75"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+        <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+      </svg>
+      <span id="sound-label">Sound: Off</span>
+    </button>
+
+    <!-- Scroll Track for 8-Chapter Journey Progression -->
+    <div id="scroll-track" class="scroll-track" aria-hidden="true">
+      <div class="scroll-stop" id="hero"></div>
+      <div class="scroll-stop" id="philosophy"></div>
+      <div class="scroll-stop" id="skills"></div>
+      <div class="scroll-stop" id="projects"></div>
+      <div class="scroll-stop" id="business"></div>
+      <div class="scroll-stop" id="leadership"></div>
+      <div class="scroll-stop" id="timeline"></div>
+      <div class="scroll-stop" id="contact"></div>
+    </div>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
