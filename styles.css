@@ -545,8 +545,38 @@ a {
   color: var(--text-secondary);
 }
 
+.academic-card {
+  margin-top: 0.95rem;
+  padding: 0.78rem 0.95rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-left: 2px solid var(--accent-blue);
+}
+
+.academic-card .section-kicker {
+  margin-bottom: 0.3rem;
+}
+
+.academic-degree {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.academic-meta {
+  margin: 0.2rem 0 0;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.kicker-spaced {
+  margin-top: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
 .hero-actions {
-  margin-top: 1.25rem;
+  margin-top: 1.15rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;

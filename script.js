@@ -1,14 +1,14 @@
-import * as THREE from 'three';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import * as THREE from "three";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 
 // ============================================================================
 // 1. PORTFOLIO DATA & WAYPOINTS
 // ============================================================================
 const SCENES = [
   {
-    id: 'hero',
-    index: '01',
-    label: 'Identity',
+    id: "hero",
+    index: "01",
+    label: "Identity",
     figureZ: 0,
     cameraPos: [-1.45, 1.85, 5.4],
     lookAt: [0.55, 1.35, -10],
@@ -16,9 +16,9 @@ const SCENES = [
     mobileLookAt: [0, 1.2, -10],
   },
   {
-    id: 'philosophy',
-    index: '02',
-    label: 'Philosophy',
+    id: "philosophy",
+    index: "02",
+    label: "Philosophy",
     figureZ: -14,
     cameraPos: [-1.55, 1.85, -8.4],
     lookAt: [0.85, 1.35, -16.5],
@@ -26,9 +26,9 @@ const SCENES = [
     mobileLookAt: [0.35, 1.25, -16.5],
   },
   {
-    id: 'skills',
-    index: '03',
-    label: 'Skills',
+    id: "skills",
+    index: "03",
+    label: "Skills",
     figureZ: -28,
     cameraPos: [1.65, 2.05, -22.2],
     lookAt: [-0.45, 1.48, -29.5],
@@ -36,9 +36,9 @@ const SCENES = [
     mobileLookAt: [0, 1.35, -29.5],
   },
   {
-    id: 'projects',
-    index: '04',
-    label: 'Projects',
+    id: "projects",
+    index: "04",
+    label: "Projects",
     figureZ: -42,
     cameraPos: [0, 1.95, -35.0],
     lookAt: [0, 1.5, -44],
@@ -46,9 +46,9 @@ const SCENES = [
     mobileLookAt: [0, 1.35, -44],
   },
   {
-    id: 'business',
-    index: '05',
-    label: 'Business',
+    id: "business",
+    index: "05",
+    label: "Experience",
     figureZ: -56,
     cameraPos: [1.5, 1.85, -50.0],
     lookAt: [-0.4, 1.4, -58.5],
@@ -56,9 +56,9 @@ const SCENES = [
     mobileLookAt: [0, 1.3, -58.5],
   },
   {
-    id: 'leadership',
-    index: '06',
-    label: 'Leadership',
+    id: "leadership",
+    index: "06",
+    label: "Leadership",
     figureZ: -70,
     cameraPos: [-1.55, 1.85, -64.2],
     lookAt: [0.55, 1.4, -72.5],
@@ -66,9 +66,9 @@ const SCENES = [
     mobileLookAt: [0, 1.3, -72.5],
   },
   {
-    id: 'timeline',
-    index: '07',
-    label: 'Archive & Timeline',
+    id: "timeline",
+    index: "07",
+    label: "Archive & Timeline",
     figureZ: -84,
     cameraPos: [1.55, 2.0, -78.0],
     lookAt: [-0.45, 1.45, -86.5],
@@ -76,9 +76,9 @@ const SCENES = [
     mobileLookAt: [0, 1.35, -86.5],
   },
   {
-    id: 'contact',
-    index: '08',
-    label: 'Contact',
+    id: "contact",
+    index: "08",
+    label: "Contact",
     figureZ: -97.5,
     cameraPos: [0, 1.75, -90.5],
     lookAt: [0, 1.55, -106],
@@ -89,292 +89,294 @@ const SCENES = [
 
 const THINKING_REFLECTIONS = [
   {
-    label: 'I',
-    text: 'Understanding is different from memorizing.',
+    label: "I",
+    text: "Understanding is different from memorizing.",
   },
   {
-    label: 'II',
-    text: 'An assumption is not a conclusion.',
+    label: "II",
+    text: "An assumption is not a conclusion.",
   },
   {
-    label: 'III',
-    text: 'Complexity becomes manageable when we understand its structure.',
+    label: "III",
+    text: "Complexity becomes manageable when we understand its structure.",
   },
 ];
 
 const SKILL_CATEGORIES = [
   {
-    id: 'programming',
-    label: 'Programming',
-    items: ['C', 'C++', 'JavaScript', 'Go'],
+    id: "programming",
+    label: "Programming",
+    items: ["C", "C++", "JavaScript", "Go"],
   },
   {
-    id: 'backend',
-    label: 'Backend',
-    items: ['Node.js', 'Express.js'],
+    id: "backend",
+    label: "Backend",
+    items: ["Node.js", "Express.js"],
   },
   {
-    id: 'frontend',
-    label: 'Frontend',
-    items: ['HTML', 'CSS', 'Tailwind CSS', 'React'],
+    id: "frontend",
+    label: "Frontend",
+    items: ["HTML", "CSS", "Tailwind CSS", "React"],
   },
   {
-    id: 'databases',
-    label: 'Databases',
-    items: ['MongoDB (OnQuest)', 'SQL'],
+    id: "databases",
+    label: "Databases",
+    items: ["MongoDB (OnQuest)", "SQL"],
   },
   {
-    id: 'other',
-    label: 'Other',
+    id: "other",
+    label: "Other",
     items: [
-      'Software Engineering Principles',
-      'Problem Solving',
-      'Competitive Programming',
-      'Basic Cloud Concepts',
-      'Basic CI/CD Understanding',
-      'Rocketry Telemetry Basics',
+      "Software Engineering Principles",
+      "Problem Solving",
+      "Competitive Programming",
+      "Basic Cloud Concepts",
+      "Basic CI/CD Understanding",
+      "Rocketry Telemetry Basics",
     ],
   },
 ];
 
 const PROJECTS = [
   {
-    index: '01',
-    name: 'Book Vibe',
+    index: "01",
+    name: "Book Vibe",
     description:
-      'A modern, responsive book discovery and management application built with React and Vite. Explore curated books, manage your reading list, and visualize your reading progress with an interactive dashboard.',
-    technologies: ['React', 'Git', 'GitHub'],
-    githubUrl: 'https://github.com/Rafidul-Islam/Book-Vibe',
-    liveUrl: 'https://book-vibe-by-rafid.netlify.app/',
+      "A modern, responsive book discovery and management application built with React and Vite. Explore curated books, manage your reading list, and visualize your reading progress with an interactive dashboard.",
+    technologies: ["React", "Git", "GitHub"],
+    githubUrl: "https://github.com/Rafidul-Islam/Book-Vibe",
+    liveUrl: "https://book-vibe-by-rafid.netlify.app/",
   },
   {
-    index: '02',
-    name: 'Meal-Board',
+    index: "02",
+    name: "Meal-Board",
     description:
-      'An online restaurant application displaying available items to customers.',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'Git', 'GitHub'],
-    githubUrl: 'https://github.com/Rafidul-Islam/meal-board',
-    liveUrl: 'https://meal-board.netlify.app/',
+      "An online restaurant application displaying available items to customers.",
+    technologies: ["HTML", "CSS", "JavaScript", "Git", "GitHub"],
+    githubUrl: "https://github.com/Rafidul-Islam/meal-board",
+    liveUrl: "https://meal-board.netlify.app/",
   },
   {
-    index: '03',
-    name: 'Self Made Dev',
+    index: "03",
+    name: "Self Made Dev",
     description:
-      'A full-stack club management platform enabling event publishing, member onboarding, resource sharing, and internal program coordination for the Self Made Dev community.',
+      "A full-stack club management platform enabling event publishing, member onboarding, resource sharing, and internal program coordination for the Self Made Dev community.",
     technologies: [
-      'HTML',
-      'Tailwind CSS',
-      'JavaScript',
-      'React',
-      'Vite',
-      'Git',
-      'GitHub',
-      'Python',
-      'Django',
+      "HTML",
+      "Tailwind CSS",
+      "JavaScript",
+      "React",
+      "Vite",
+      "Git",
+      "GitHub",
+      "Python",
+      "Django",
     ],
-    githubUrl: 'https://github.com/Rafidul-Islam/self-made-devs',
-    liveUrl: 'https://selfmade-dev.vercel.app/',
+    githubUrl: "https://github.com/Rafidul-Islam/self-made-devs",
+    liveUrl: "https://selfmade-dev.vercel.app/",
   },
   {
-    index: '04',
-    name: 'DevQuest Preli',
+    index: "04",
+    name: "DevQuest Preli",
     description:
-      'A club program website for conducting preliminary examinations.',
+      "A club program website for conducting preliminary examinations.",
     technologies: [
-      'HTML',
-      'Tailwind CSS',
-      'JavaScript',
-      'React',
-      'Vite',
-      'Git',
-      'GitHub',
-      'Python',
-      'Django',
+      "HTML",
+      "Tailwind CSS",
+      "JavaScript",
+      "React",
+      "Vite",
+      "Git",
+      "GitHub",
+      "Python",
+      "Django",
     ],
-    githubUrl: 'https://github.com/Rafidul-Islam/Devquest_preli',
-    liveUrl: 'https://devquest-preli.vercel.app/',
+    githubUrl: "https://github.com/Rafidul-Islam/Devquest_preli",
+    liveUrl: "https://devquest-preli.vercel.app/",
   },
   {
-    index: '05',
-    name: 'English Janala',
-    description: 'A vocabulary learning web application.',
+    index: "05",
+    name: "English Janala",
+    description: "A vocabulary learning web application.",
     technologies: [
-      'HTML',
-      'Tailwind CSS',
-      'JavaScript',
-      'React',
-      'Vite',
-      'Git',
-      'GitHub',
+      "HTML",
+      "Tailwind CSS",
+      "JavaScript",
+      "React",
+      "Vite",
+      "Git",
+      "GitHub",
     ],
-    githubUrl: 'https://github.com/Rafidul-Islam?tab=repositories',
-    liveUrl: 'https://english-janala-by-rafid.netlify.app/',
+    githubUrl: "https://github.com/Rafidul-Islam?tab=repositories",
+    liveUrl: "https://english-janala-by-rafid.netlify.app/",
   },
   {
-    index: '06',
-    name: 'Auction Gallery',
+    index: "06",
+    name: "Auction Gallery",
     description:
-      'A web application for exploring bids on different items and collections.',
-    technologies: ['TypeScript', 'React', 'Vite', 'react-beautiful-dnd'],
-    githubUrl: 'https://github.com/Rafidul-Islam?tab=repositories',
-    liveUrl: 'https://auctiion-gallery-by-rafid.netlify.app/',
+      "A web application for exploring bids on different items and collections.",
+    technologies: ["TypeScript", "React", "Vite", "react-beautiful-dnd"],
+    githubUrl: "https://github.com/Rafidul-Islam?tab=repositories",
+    liveUrl: "https://auctiion-gallery-by-rafid.netlify.app/",
   },
   {
-    index: '07',
-    name: 'SoilSync',
+    index: "07",
+    name: "SoilSync",
     description:
-      'Made with Team Arekta for the NASA Space Apps Challenge 2026 (“Field Shift: Adapting Farms with NASA Data”). A Bangla-first decision-support tool that turns NASA Earth observations into explainable crop-rotation options for farmers in Bangladesh’s Barind Tract. I was the developer on a six-person team. The demo runs on clearly labelled sample data.',
-    technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
-    githubUrl: 'https://github.com/Rafidul-Islam/SoilSync',
-    liveUrl: 'https://cropwisebyarektateam.netlify.app/',
+      "Made with Team Arekta for the NASA Space Apps Challenge 2026 (“Field Shift: Adapting Farms with NASA Data”). A Bangla-first decision-support tool that turns NASA Earth observations into explainable crop-rotation options for farmers in Bangladesh’s Barind Tract. I was the developer on a six-person team. The demo runs on clearly labelled sample data.",
+    technologies: ["React", "TypeScript", "Vite", "Tailwind CSS"],
+    githubUrl: "https://github.com/Rafidul-Islam/SoilSync",
+    liveUrl: "https://cropwisebyarektateam.netlify.app/",
   },
   {
-    index: '08',
-    name: 'DIUSEC ERP',
+    index: "08",
+    name: "DIUSEC ERP",
     description:
-      'An ERP system for DIUSEC, the Software Engineering Club at DIU.',
+      "An ERP system for DIUSEC, the Software Engineering Club at DIU.",
     technologies: [],
-    githubUrl: 'https://github.com/Rafidul-Islam/DIUSEC',
-    liveUrl: 'https://diusec.swe.bd/',
+    githubUrl: "https://github.com/Rafidul-Islam/DIUSEC",
+    liveUrl: "https://diusec.swe.bd/",
   },
   {
-    index: '09',
-    name: 'P2P LAN Chat System',
+    index: "09",
+    name: "P2P LAN Chat System",
     description:
-      'A peer-to-peer chat system for local networks, written in C with separate client and server programs.',
-    technologies: ['C'],
-    githubUrl: 'https://github.com/Rafidul-Islam/p2p_lan_chat_system',
-    liveUrl: '',
+      "A peer-to-peer chat system for local networks, written in C with separate client and server programs.",
+    technologies: ["C"],
+    githubUrl: "https://github.com/Rafidul-Islam/p2p_lan_chat_system",
+    liveUrl: "",
   },
 ];
 
 const LEADERSHIP_ROLES = [
   {
-    role: 'General Member',
-    period: 'January 2025 – September 2025',
+    role: "General Member",
+    period: "January 2025 – September 2025",
     summary:
-      'Participated in problem-solving sessions, software engineering discussions, and collaborative student builds.',
+      "Participated in problem-solving sessions, software engineering discussions, and collaborative student builds.",
   },
   {
-    role: 'Senior Executive',
-    period: 'October 2025 – December 2025',
+    role: "Senior Executive",
+    period: "October 2025 – December 2025",
     summary:
-      'Coordinated technical tracks, member execution, and collaborative club initiatives.',
+      "Coordinated technical tracks, member execution, and collaborative club initiatives.",
   },
   {
-    role: 'Development Secretary',
-    period: 'Current role',
+    role: "Development Secretary",
+    period: "Current role",
     summary:
-      'Leading software development initiatives, technical publications, and shared engineering efforts at the Software Engineering Club.',
+      "Leading software development initiatives, technical publications, and shared engineering efforts at the Software Engineering Club.",
   },
 ];
 
 const TIMELINE_MILESTONES = [
   {
-    year: '2025',
+    year: "2025",
     items: [
-      'Began software engineering studies.',
-      'General Member, Software Engineering Club.',
-      'Senior Executive, Software Engineering Club.',
+      "Began B.Sc. in Software Engineering at Daffodil International University (DIU), Dhaka.",
+      "General Member, Software Engineering Club.",
+      "Senior Executive, Software Engineering Club.",
     ],
   },
   {
-    year: '2026',
+    year: "2026",
     items: [
-      'Development Secretary, Software Engineering Club.',
-      'SWEOrbit club magazine completed and published.',
-      'SoilSync built with Team Arekta for NASA Space Apps Challenge 2026.',
-      'Business Associate at Drops (Sanitary Goods Importer).',
+      "Development Secretary, Software Engineering Club.",
+      "SWEOrbit club magazine completed and published.",
+      "SoilSync built with Team Arekta for NASA Space Apps Challenge 2026.",
+      "DIUSEC ERP built for the Software Engineering Club at DIU.",
+      "Business Associate at Drops (Sanitary Goods Importer).",
     ],
   },
 ];
 
 const MEMORY_ARTIFACTS = [
   {
-    id: 'projects',
-    label: 'Projects',
-    category: '01 · Systems Built',
-    title: 'Software Projects',
+    id: "projects",
+    label: "Projects",
+    category: "01 · Systems Built",
+    title: "Software Projects",
     summary:
-      'Nine practical applications turning ideas into usable systems across React, TypeScript, Django, C, and vanilla web foundations.',
+      "Nine practical applications turning ideas into usable systems across React, TypeScript, Django, C, and vanilla web foundations.",
     details: [
-      'Book Vibe · Meal-Board · Self Made Dev',
-      'DevQuest Preli · English Janala · Auction Gallery',
-      'SoilSync · DIUSEC ERP · P2P LAN Chat System',
+      "Book Vibe · Meal-Board · Self Made Dev",
+      "DevQuest Preli · English Janala · Auction Gallery",
+      "SoilSync · DIUSEC ERP · P2P LAN Chat System",
     ],
   },
   {
-    id: 'business',
-    label: 'Drops',
-    category: '02 · Commerce & Ops',
-    title: 'Business Associate — Drops',
+    id: "business",
+    label: "Experience",
+    category: "02 · Work Experience",
+    title: "Business Associate — Drops",
     summary:
-      'Sanitary Goods Importer — managing software administration, assisting with trade documentation, and supporting commercial revenue growth.',
+      "Sanitary Goods Importer — managing software administration, assisting with trade documentation, and supporting commercial revenue growth.",
     details: [
-      'Software administration and operational tool management',
-      'Export and import documentation assistance',
-      'Supporting business operations to help increase revenue',
+      "Software administration and operational tool management",
+      "Export and import documentation assistance",
+      "Supporting business operations to help increase revenue",
     ],
   },
   {
-    id: 'sweorbit',
-    label: 'SWEOrbit',
-    category: '03 · Publication',
-    title: 'SWEOrbit — Club Magazine',
+    id: "academic",
+    label: "Academic",
+    category: "03 · Academic Background",
+    title: "B.Sc. in Software Engineering",
     summary:
-      'Editorial and technical magazine initiative coordinated through the Software Engineering Club.',
+      "Daffodil International University (DIU), Dhaka (2025 – 2028) — building strong foundations in software engineering principles, algorithms, and system architecture.",
     details: [
-      'Status: Completed and Published',
-      'Collective technical writing and community storytelling',
+      "Institution: Daffodil International University (DIU)",
+      "Program: Bachelor of Science in Software Engineering (2025 – 2028)",
+      "Focus: Backend Systems, Data Structures & Problem Solving",
     ],
   },
   {
-    id: 'leadership',
-    label: 'Leadership',
-    category: '04 · Collective Effort',
-    title: 'Leadership Milestones',
+    id: "milestones",
+    label: "Milestones",
+    category: "04 · Achievements",
+    title: "Key Achievements & Milestones",
     summary:
-      'Progression through responsibility within the Software Engineering Club.',
+      "Real engineering deliverables, collaborative builds, and community publications shipped to completion.",
     details: [
-      'General Member (January 2025 – September 2025)',
-      'Senior Executive (October 2025 – December 2025)',
-      'Development Secretary (Current role)',
+      "NASA Space Apps Challenge 2026 — SoilSync developer on Team Arekta",
+      "SWEOrbit — Club Magazine completed and published",
+      "DIUSEC ERP — Built club operations system (diusec.swe.bd)",
+      "Software Engineering Club — Progressed to Development Secretary",
     ],
   },
   {
-    id: 'interests',
-    label: 'Interests',
-    category: '05 · Inquiry',
-    title: 'Technical Interests',
+    id: "leadership",
+    label: "Leadership",
+    category: "05 · Roles & Inquiry",
+    title: "Roles & Intellectual Focus",
     summary:
-      'Core areas of ongoing exploration beneath the interface.',
+      "Progression through club responsibilities paired with core technical and philosophical inquiry.",
     details: [
-      'Backend Engineering & System Design',
-      'Software Engineering Principles & Problem Solving',
-      'Competitive Programming & Rational Thinking',
+      "General Member (Jan – Sep 2025) → Senior Executive (Oct – Dec 2025) → Development Secretary (Current)",
+      "Backend Engineering, System Design & Competitive Programming",
     ],
   },
 ];
 
 const VISITOR_OPTIONS = [
-  'The choices they make.',
-  'The experiences they collect.',
-  'The thoughts they hold.',
-  'The things they create.',
+  "The choices they make.",
+  "The experiences they collect.",
+  "The thoughts they hold.",
+  "The things they create.",
 ];
 
 // ============================================================================
 // 2. UI STATE & DOM BINDINGS
 // ============================================================================
 const state = {
-  activeSceneId: '',
+  activeSceneId: "",
   selectedThinking: 0,
   selectedSkill: 0,
   hoveredSkill: null,
   selectedProject: 0,
   hoveredProject: null,
   selectedRole: 2,
-  archiveMode: 'timeline',
+  archiveMode: "timeline",
   selectedTimelineYear: 0,
   hoveredTimelineYear: null,
   selectedMemory: 0,
@@ -382,16 +384,16 @@ const state = {
   selectedVisitorOption: null,
   answerRevealTimer: 0,
   contentRevealTimer: 0,
-  reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
 };
 
-const loadingScreen = document.getElementById('loading-screen');
-const loadingBarFill = document.getElementById('loading-bar-fill');
-const loadingPercent = document.getElementById('loading-percent');
-const webglMount = document.getElementById('webgl-mount');
-const webglFallback = document.getElementById('webgl-fallback');
-const mobileToggle = document.getElementById('mobile-menu-toggle');
-const mobileNav = document.getElementById('mobile-nav');
+const loadingScreen = document.getElementById("loading-screen");
+const loadingBarFill = document.getElementById("loading-bar-fill");
+const loadingPercent = document.getElementById("loading-percent");
+const webglMount = document.getElementById("webgl-mount");
+const webglFallback = document.getElementById("webgl-fallback");
+const mobileToggle = document.getElementById("mobile-menu-toggle");
+const mobileNav = document.getElementById("mobile-nav");
 
 function setLoadingProgress(pct) {
   const clamped = Math.min(Math.max(pct, 0), 100);
@@ -405,31 +407,31 @@ function setLoadingProgress(pct) {
 
 function hideLoadingScreen() {
   if (!loadingScreen) return;
-  loadingScreen.classList.add('is-fading');
+  loadingScreen.classList.add("is-fading");
   window.setTimeout(() => {
-    loadingScreen.classList.add('hidden');
+    loadingScreen.classList.add("hidden");
   }, 460);
 }
 
 function renderSkillsUI() {
-  const tabsEl = document.getElementById('skill-tabs');
-  const titleEl = document.getElementById('active-skill-title');
-  const listEl = document.getElementById('active-skill-list');
+  const tabsEl = document.getElementById("skill-tabs");
+  const titleEl = document.getElementById("active-skill-title");
+  const listEl = document.getElementById("active-skill-list");
   if (!tabsEl || !titleEl || !listEl) return;
 
   const activeIdx =
     state.hoveredSkill !== null ? state.hoveredSkill : state.selectedSkill;
   const activeCat = SKILL_CATEGORIES[activeIdx] || SKILL_CATEGORIES[0];
 
-  tabsEl.innerHTML = '';
+  tabsEl.innerHTML = "";
   SKILL_CATEGORIES.forEach((cat, idx) => {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.role = 'tab';
-    btn.className = `tab-btn${idx === activeIdx ? ' is-active' : ''}`;
-    btn.setAttribute('aria-selected', String(idx === activeIdx));
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.role = "tab";
+    btn.className = `tab-btn${idx === activeIdx ? " is-active" : ""}`;
+    btn.setAttribute("aria-selected", String(idx === activeIdx));
     btn.textContent = cat.label;
-    btn.addEventListener('click', () => {
+    btn.addEventListener("click", () => {
       state.selectedSkill = idx;
       renderSkillsUI();
     });
@@ -437,39 +439,49 @@ function renderSkillsUI() {
   });
 
   titleEl.textContent = activeCat.label;
-  listEl.innerHTML = '';
+  listEl.innerHTML = "";
   activeCat.items.forEach((item) => {
-    const li = document.createElement('li');
+    const li = document.createElement("li");
     li.textContent = item;
     listEl.appendChild(li);
   });
 }
 
 function renderProjectsUI() {
-  const tabsEl = document.getElementById('project-tabs');
-  const nameEl = document.getElementById('project-name');
-  const counterEl = document.getElementById('project-counter');
-  const descEl = document.getElementById('project-desc');
-  const techEl = document.getElementById('project-tech');
-  const githubEl = document.getElementById('project-github');
-  const liveEl = document.getElementById('project-live');
-  if (!tabsEl || !nameEl || !counterEl || !descEl || !techEl || !githubEl || !liveEl) {
+  const tabsEl = document.getElementById("project-tabs");
+  const nameEl = document.getElementById("project-name");
+  const counterEl = document.getElementById("project-counter");
+  const descEl = document.getElementById("project-desc");
+  const techEl = document.getElementById("project-tech");
+  const githubEl = document.getElementById("project-github");
+  const liveEl = document.getElementById("project-live");
+  if (
+    !tabsEl ||
+    !nameEl ||
+    !counterEl ||
+    !descEl ||
+    !techEl ||
+    !githubEl ||
+    !liveEl
+  ) {
     return;
   }
 
   const activeIdx =
-    state.hoveredProject !== null ? state.hoveredProject : state.selectedProject;
+    state.hoveredProject !== null
+      ? state.hoveredProject
+      : state.selectedProject;
   const proj = PROJECTS[activeIdx] || PROJECTS[0];
 
-  tabsEl.innerHTML = '';
+  tabsEl.innerHTML = "";
   PROJECTS.forEach((p, idx) => {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.role = 'tab';
-    btn.className = `tab-btn num${idx === activeIdx ? ' is-active' : ''}`;
-    btn.setAttribute('aria-selected', String(idx === activeIdx));
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.role = "tab";
+    btn.className = `tab-btn num${idx === activeIdx ? " is-active" : ""}`;
+    btn.setAttribute("aria-selected", String(idx === activeIdx));
     btn.textContent = `${p.index} · ${p.name}`;
-    btn.addEventListener('click', () => {
+    btn.addEventListener("click", () => {
       state.selectedProject = idx;
       renderProjectsUI();
     });
@@ -477,76 +489,77 @@ function renderProjectsUI() {
   });
 
   nameEl.textContent = proj.name;
-  counterEl.textContent = `Project ${proj.index} / ${String(PROJECTS.length).padStart(2, '0')}`;
+  counterEl.textContent = `Project ${proj.index} / ${String(PROJECTS.length).padStart(2, "0")}`;
   descEl.textContent = proj.description;
   if (proj.technologies.length > 0) {
-    techEl.textContent = proj.technologies.join(' · ');
-    techEl.classList.remove('hidden');
+    techEl.textContent = proj.technologies.join(" · ");
+    techEl.classList.remove("hidden");
   } else {
-    techEl.textContent = '';
-    techEl.classList.add('hidden');
+    techEl.textContent = "";
+    techEl.classList.add("hidden");
   }
-  githubEl.setAttribute('href', proj.githubUrl);
+  githubEl.setAttribute("href", proj.githubUrl);
   if (proj.liveUrl) {
-    liveEl.setAttribute('href', proj.liveUrl);
-    liveEl.classList.remove('hidden');
+    liveEl.setAttribute("href", proj.liveUrl);
+    liveEl.classList.remove("hidden");
   } else {
-    liveEl.removeAttribute('href');
-    liveEl.classList.add('hidden');
+    liveEl.removeAttribute("href");
+    liveEl.classList.add("hidden");
   }
 }
 
 function renderThinkingUI() {
-  const tabsEl = document.getElementById('thinking-tabs');
-  const quoteEl = document.getElementById('thinking-quote');
+  const tabsEl = document.getElementById("thinking-tabs");
+  const quoteEl = document.getElementById("thinking-quote");
   if (!tabsEl || !quoteEl) return;
 
-  tabsEl.innerHTML = '';
+  tabsEl.innerHTML = "";
   THINKING_REFLECTIONS.forEach((item, idx) => {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.role = 'tab';
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.role = "tab";
     const isActive = idx === state.selectedThinking;
-    btn.className = `tab-btn${isActive ? ' is-active' : ''}`;
-    btn.setAttribute('aria-selected', String(isActive));
+    btn.className = `tab-btn${isActive ? " is-active" : ""}`;
+    btn.setAttribute("aria-selected", String(isActive));
     btn.textContent = `Note ${item.label}`;
-    btn.addEventListener('click', () => {
+    btn.addEventListener("click", () => {
       state.selectedThinking = idx;
       renderThinkingUI();
     });
     tabsEl.appendChild(btn);
   });
 
-  const active = THINKING_REFLECTIONS[state.selectedThinking] || THINKING_REFLECTIONS[0];
+  const active =
+    THINKING_REFLECTIONS[state.selectedThinking] || THINKING_REFLECTIONS[0];
   quoteEl.textContent = `“${active.text}”`;
 }
 
 function renderLeadershipUI() {
-  const container = document.getElementById('leadership-timeline');
+  const container = document.getElementById("leadership-timeline");
   if (!container) return;
 
-  container.innerHTML = '';
+  container.innerHTML = "";
   LEADERSHIP_ROLES.forEach((item, idx) => {
     const isSelected = idx === state.selectedRole;
-    const wrapper = document.createElement('div');
-    wrapper.className = `timeline-entry${isSelected ? ' is-selected' : ''}`;
+    const wrapper = document.createElement("div");
+    wrapper.className = `timeline-entry${isSelected ? " is-selected" : ""}`;
 
-    const node = document.createElement('span');
-    node.className = 'timeline-node';
-    node.setAttribute('aria-hidden', 'true');
+    const node = document.createElement("span");
+    node.className = "timeline-node";
+    node.setAttribute("aria-hidden", "true");
 
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'timeline-card-btn';
-    btn.setAttribute('aria-expanded', String(isSelected));
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "timeline-card-btn";
+    btn.setAttribute("aria-expanded", String(isSelected));
     btn.innerHTML = `
       <div class="timeline-top">
         <span class="timeline-role">${item.role}</span>
         <span class="timeline-period">${item.period}</span>
       </div>
-      ${isSelected ? `<p class="timeline-summary">${item.summary}</p>` : ''}
+      ${isSelected ? `<p class="timeline-summary">${item.summary}</p>` : ""}
     `;
-    btn.addEventListener('click', () => {
+    btn.addEventListener("click", () => {
       state.selectedRole = idx;
       renderLeadershipUI();
     });
@@ -558,26 +571,26 @@ function renderLeadershipUI() {
 }
 
 function renderArchiveModeUI() {
-  const timelineBtn = document.getElementById('mode-timeline-btn');
-  const memoryBtn = document.getElementById('mode-memory-btn');
-  const timelineView = document.getElementById('view-timeline');
-  const memoryView = document.getElementById('view-memory');
+  const timelineBtn = document.getElementById("mode-timeline-btn");
+  const memoryBtn = document.getElementById("mode-memory-btn");
+  const timelineView = document.getElementById("view-timeline");
+  const memoryView = document.getElementById("view-memory");
   if (!timelineBtn || !memoryBtn || !timelineView || !memoryView) return;
 
-  const isTimeline = state.archiveMode === 'timeline';
-  timelineBtn.classList.toggle('is-active', isTimeline);
-  timelineBtn.setAttribute('aria-selected', String(isTimeline));
-  memoryBtn.classList.toggle('is-active', !isTimeline);
-  memoryBtn.setAttribute('aria-selected', String(!isTimeline));
+  const isTimeline = state.archiveMode === "timeline";
+  timelineBtn.classList.toggle("is-active", isTimeline);
+  timelineBtn.setAttribute("aria-selected", String(isTimeline));
+  memoryBtn.classList.toggle("is-active", !isTimeline);
+  memoryBtn.setAttribute("aria-selected", String(!isTimeline));
 
-  timelineView.classList.toggle('hidden', !isTimeline);
-  memoryView.classList.toggle('hidden', isTimeline);
+  timelineView.classList.toggle("hidden", !isTimeline);
+  memoryView.classList.toggle("hidden", isTimeline);
 }
 
 function renderTimelineUI() {
-  const tabsEl = document.getElementById('timeline-year-tabs');
-  const headingEl = document.getElementById('timeline-year-heading');
-  const listEl = document.getElementById('timeline-milestones-list');
+  const tabsEl = document.getElementById("timeline-year-tabs");
+  const headingEl = document.getElementById("timeline-year-heading");
+  const listEl = document.getElementById("timeline-milestones-list");
   if (!tabsEl || !headingEl || !listEl) return;
 
   const activeIdx =
@@ -586,15 +599,15 @@ function renderTimelineUI() {
       : state.selectedTimelineYear;
   const activeYear = TIMELINE_MILESTONES[activeIdx] || TIMELINE_MILESTONES[0];
 
-  tabsEl.innerHTML = '';
+  tabsEl.innerHTML = "";
   TIMELINE_MILESTONES.forEach((entry, idx) => {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.role = 'tab';
-    btn.className = `tab-btn num${idx === activeIdx ? ' is-active' : ''}`;
-    btn.setAttribute('aria-selected', String(idx === activeIdx));
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.role = "tab";
+    btn.className = `tab-btn num${idx === activeIdx ? " is-active" : ""}`;
+    btn.setAttribute("aria-selected", String(idx === activeIdx));
     btn.textContent = entry.year;
-    btn.addEventListener('click', () => {
+    btn.addEventListener("click", () => {
       state.selectedTimelineYear = idx;
       renderTimelineUI();
     });
@@ -602,35 +615,35 @@ function renderTimelineUI() {
   });
 
   headingEl.textContent = activeYear.year;
-  listEl.innerHTML = '';
+  listEl.innerHTML = "";
   activeYear.items.forEach((text) => {
-    const li = document.createElement('li');
+    const li = document.createElement("li");
     li.textContent = text;
     listEl.appendChild(li);
   });
 }
 
 function renderMemoryUI() {
-  const tabsEl = document.getElementById('memory-tabs');
-  const titleEl = document.getElementById('memory-title');
-  const categoryEl = document.getElementById('memory-category');
-  const summaryEl = document.getElementById('memory-summary');
-  const detailsEl = document.getElementById('memory-details');
+  const tabsEl = document.getElementById("memory-tabs");
+  const titleEl = document.getElementById("memory-title");
+  const categoryEl = document.getElementById("memory-category");
+  const summaryEl = document.getElementById("memory-summary");
+  const detailsEl = document.getElementById("memory-details");
   if (!tabsEl || !titleEl || !categoryEl || !summaryEl || !detailsEl) return;
 
   const activeIdx =
     state.hoveredMemory !== null ? state.hoveredMemory : state.selectedMemory;
   const artifact = MEMORY_ARTIFACTS[activeIdx] || MEMORY_ARTIFACTS[0];
 
-  tabsEl.innerHTML = '';
+  tabsEl.innerHTML = "";
   MEMORY_ARTIFACTS.forEach((item, idx) => {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.role = 'tab';
-    btn.className = `tab-btn${idx === activeIdx ? ' is-active' : ''}`;
-    btn.setAttribute('aria-selected', String(idx === activeIdx));
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.role = "tab";
+    btn.className = `tab-btn${idx === activeIdx ? " is-active" : ""}`;
+    btn.setAttribute("aria-selected", String(idx === activeIdx));
     btn.textContent = item.label;
-    btn.addEventListener('click', () => {
+    btn.addEventListener("click", () => {
       state.selectedMemory = idx;
       renderMemoryUI();
     });
@@ -640,28 +653,28 @@ function renderMemoryUI() {
   titleEl.textContent = artifact.title;
   categoryEl.textContent = artifact.category;
   summaryEl.textContent = artifact.summary;
-  detailsEl.innerHTML = '';
+  detailsEl.innerHTML = "";
   artifact.details.forEach((line) => {
-    const li = document.createElement('li');
+    const li = document.createElement("li");
     li.textContent = line;
     detailsEl.appendChild(li);
   });
 }
 
 function renderVisitorUI() {
-  const optionsEl = document.getElementById('visitor-options');
-  const responseEl = document.getElementById('visitor-response');
+  const optionsEl = document.getElementById("visitor-options");
+  const responseEl = document.getElementById("visitor-response");
   if (!optionsEl || !responseEl) return;
 
-  optionsEl.innerHTML = '';
+  optionsEl.innerHTML = "";
   VISITOR_OPTIONS.forEach((opt, idx) => {
-    const btn = document.createElement('button');
-    btn.type = 'button';
+    const btn = document.createElement("button");
+    btn.type = "button";
     const isSelected = state.selectedVisitorOption === idx;
-    btn.className = `visitor-option-btn${isSelected ? ' is-selected' : ''}`;
-    btn.setAttribute('aria-pressed', String(isSelected));
+    btn.className = `visitor-option-btn${isSelected ? " is-selected" : ""}`;
+    btn.setAttribute("aria-pressed", String(isSelected));
     btn.textContent = opt;
-    btn.addEventListener('click', () => {
+    btn.addEventListener("click", () => {
       state.selectedVisitorOption = idx;
       renderVisitorUI();
     });
@@ -669,10 +682,10 @@ function renderVisitorUI() {
   });
 
   if (state.selectedVisitorOption !== null) {
-    responseEl.textContent = '“Perhaps no single answer is enough.”';
-    responseEl.classList.remove('hidden');
+    responseEl.textContent = "“Perhaps no single answer is enough.”";
+    responseEl.classList.remove("hidden");
   } else {
-    responseEl.classList.add('hidden');
+    responseEl.classList.add("hidden");
   }
 }
 
@@ -685,18 +698,21 @@ function scheduleRevealSequence(panel) {
   clearRevealTimers();
   if (!panel) return;
   if (state.reducedMotion) {
-    panel.classList.add('is-answer-revealed', 'is-content-revealed');
+    panel.classList.add("is-answer-revealed", "is-content-revealed");
     return;
   }
   state.answerRevealTimer = window.setTimeout(() => {
-    if (!panel.hasAttribute('hidden') && panel.classList.contains('is-visible')) {
-      panel.classList.add('is-answer-revealed');
+    if (
+      !panel.hasAttribute("hidden") &&
+      panel.classList.contains("is-visible")
+    ) {
+      panel.classList.add("is-answer-revealed");
       state.contentRevealTimer = window.setTimeout(() => {
         if (
-          !panel.hasAttribute('hidden') &&
-          panel.classList.contains('is-answer-revealed')
+          !panel.hasAttribute("hidden") &&
+          panel.classList.contains("is-answer-revealed")
         ) {
-          panel.classList.add('is-content-revealed');
+          panel.classList.add("is-content-revealed");
         }
       }, 420);
     }
@@ -712,33 +728,33 @@ function updateActiveSceneUI(nextId) {
     const panel = document.getElementById(`panel-${s.id}`);
     if (panel) {
       panel.classList.remove(
-        'is-visible',
-        'is-answer-revealed',
-        'is-content-revealed',
+        "is-visible",
+        "is-answer-revealed",
+        "is-content-revealed",
       );
       if (s.id === nextId) {
-        panel.removeAttribute('hidden');
+        panel.removeAttribute("hidden");
       } else {
-        panel.setAttribute('hidden', '');
+        panel.setAttribute("hidden", "");
       }
     }
   });
 
-  document.querySelectorAll('[data-nav]').forEach((el) => {
-    const target = el.getAttribute('data-nav');
+  document.querySelectorAll("[data-nav]").forEach((el) => {
+    const target = el.getAttribute("data-nav");
     const isActive = target === nextId;
-    el.classList.toggle('is-active', isActive);
+    el.classList.toggle("is-active", isActive);
   });
 }
 
 function initPanelVisibilityObserver() {
-  const panels = Array.from(document.querySelectorAll('.scene-panel'));
-  if (!('IntersectionObserver' in window)) {
+  const panels = Array.from(document.querySelectorAll(".scene-panel"));
+  if (!("IntersectionObserver" in window)) {
     panels.forEach((panel) => {
       panel.classList.add(
-        'is-visible',
-        'is-answer-revealed',
-        'is-content-revealed',
+        "is-visible",
+        "is-answer-revealed",
+        "is-content-revealed",
       );
     });
     return;
@@ -750,16 +766,16 @@ function initPanelVisibilityObserver() {
         if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
           requestAnimationFrame(() => {
             requestAnimationFrame(() => {
-              if (entry.target.hasAttribute('hidden')) return;
-              entry.target.classList.add('is-visible');
+              if (entry.target.hasAttribute("hidden")) return;
+              entry.target.classList.add("is-visible");
               scheduleRevealSequence(entry.target);
             });
           });
         } else if (!entry.isIntersecting) {
           entry.target.classList.remove(
-            'is-visible',
-            'is-answer-revealed',
-            'is-content-revealed',
+            "is-visible",
+            "is-answer-revealed",
+            "is-content-revealed",
           );
         }
       });
@@ -773,11 +789,15 @@ function initPanelVisibilityObserver() {
   panels.forEach((panel) => panelObserver.observe(panel));
 
   // Also observe full-viewport scroll stops so chapter arrival syncs cleanly
-  const stops = Array.from(document.querySelectorAll('.scroll-stop'));
+  const stops = Array.from(document.querySelectorAll(".scroll-stop"));
   const stopObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && entry.intersectionRatio >= 0.9 && entry.target.id) {
+        if (
+          entry.isIntersecting &&
+          entry.intersectionRatio >= 0.9 &&
+          entry.target.id
+        ) {
           updateActiveSceneUI(entry.target.id);
         }
       });
@@ -796,8 +816,8 @@ function navigateToScene(sceneId) {
   if (idx < 0) return;
 
   if (mobileNav && mobileToggle) {
-    mobileNav.classList.add('hidden');
-    mobileToggle.setAttribute('aria-expanded', 'false');
+    mobileNav.classList.add("hidden");
+    mobileToggle.setAttribute("aria-expanded", "false");
   }
 
   const maxScroll = Math.max(
@@ -807,7 +827,7 @@ function navigateToScene(sceneId) {
   const targetY = (idx / (SCENES.length - 1)) * maxScroll;
   window.scrollTo({
     top: targetY,
-    behavior: state.reducedMotion ? 'auto' : 'smooth',
+    behavior: state.reducedMotion ? "auto" : "smooth",
   });
 }
 
@@ -816,13 +836,13 @@ function navigateToScene(sceneId) {
 // ============================================================================
 function createDarkSlateTexture(anisotropy) {
   const size = 512;
-  const canvas = document.createElement('canvas');
+  const canvas = document.createElement("canvas");
   canvas.width = size;
   canvas.height = size;
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext("2d");
 
   if (ctx) {
-    ctx.fillStyle = '#12151d';
+    ctx.fillStyle = "#12151d";
     ctx.fillRect(0, 0, size, size);
 
     let seed = 109;
@@ -836,13 +856,13 @@ function createDarkSlateTexture(anisotropy) {
       const y = rand() * size;
       const r = 0.6 + rand() * 1.8;
       ctx.fillStyle =
-        rand() > 0.5 ? 'rgba(255,255,255,0.028)' : 'rgba(4,5,8,0.22)';
+        rand() > 0.5 ? "rgba(255,255,255,0.028)" : "rgba(4,5,8,0.22)";
       ctx.beginPath();
       ctx.arc(x, y, r, 0, Math.PI * 2);
       ctx.fill();
     }
 
-    ctx.strokeStyle = 'rgba(197, 204, 216, 0.08)';
+    ctx.strokeStyle = "rgba(197, 204, 216, 0.08)";
     ctx.lineWidth = 1;
     for (let y = 0; y <= size; y += 128) {
       ctx.beginPath();
@@ -850,7 +870,7 @@ function createDarkSlateTexture(anisotropy) {
       ctx.lineTo(size, y);
       ctx.stroke();
     }
-    ctx.strokeStyle = 'rgba(197, 204, 216, 0.04)';
+    ctx.strokeStyle = "rgba(197, 204, 216, 0.04)";
     ctx.beginPath();
     ctx.moveTo(size / 2, 0);
     ctx.lineTo(size / 2, size);
@@ -868,10 +888,10 @@ function createDarkSlateTexture(anisotropy) {
 
 function createRadialTexture(innerRgba, midRgba, outerRgba) {
   const size = 256;
-  const canvas = document.createElement('canvas');
+  const canvas = document.createElement("canvas");
   canvas.width = size;
   canvas.height = size;
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext("2d");
   if (ctx) {
     const grad = ctx.createRadialGradient(
       size / 2,
@@ -893,15 +913,15 @@ function createRadialTexture(innerRgba, midRgba, outerRgba) {
 }
 
 function createBeamTexture() {
-  const canvas = document.createElement('canvas');
+  const canvas = document.createElement("canvas");
   canvas.width = 128;
   canvas.height = 256;
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext("2d");
   if (ctx) {
     const grad = ctx.createLinearGradient(0, 0, 0, 256);
-    grad.addColorStop(0, 'rgba(239, 228, 210, 0.24)');
-    grad.addColorStop(0.45, 'rgba(239, 228, 210, 0.08)');
-    grad.addColorStop(1, 'rgba(239, 228, 210, 0)');
+    grad.addColorStop(0, "rgba(239, 228, 210, 0.24)");
+    grad.addColorStop(0.45, "rgba(239, 228, 210, 0.08)");
+    grad.addColorStop(1, "rgba(239, 228, 210, 0)");
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, 128, 256);
   }
@@ -917,14 +937,14 @@ function createMaterials(renderer, isSoftwareGl) {
 
   const slateMap = createDarkSlateTexture(anisotropy);
   const dustMap = createRadialTexture(
-    'rgba(241, 241, 241, 0.85)',
-    'rgba(197, 204, 216, 0.28)',
-    'rgba(197, 204, 216, 0)',
+    "rgba(241, 241, 241, 0.85)",
+    "rgba(197, 204, 216, 0.28)",
+    "rgba(197, 204, 216, 0)",
   );
   const shadowMap = createRadialTexture(
-    'rgba(0, 0, 0, 0.72)',
-    'rgba(0, 0, 0, 0.28)',
-    'rgba(0, 0, 0, 0)',
+    "rgba(0, 0, 0, 0.72)",
+    "rgba(0, 0, 0, 0.28)",
+    "rgba(0, 0, 0, 0)",
   );
   const beamMap = createBeamTexture();
 
@@ -1030,7 +1050,7 @@ function createMaterials(renderer, isSoftwareGl) {
       shadowMap.dispose();
       beamMap.dispose();
       Object.values(this).forEach((val) => {
-        if (val && typeof val.dispose === 'function' && val !== this.dispose) {
+        if (val && typeof val.dispose === "function" && val !== this.dispose) {
           val.dispose();
         }
       });
@@ -1061,7 +1081,13 @@ function buildHumanFigure(mats, disposables) {
   const waistGeo = new THREE.CylinderGeometry(0.158, 0.138, 0.24, 18);
   const chestGeo = new THREE.CylinderGeometry(0.195, 0.158, 0.28, 18);
   const shoulderCapGeo = new THREE.SphereGeometry(0.072, 14, 12);
-  const collarGeo = new THREE.TorusGeometry(0.088, 0.022, 10, 24, Math.PI * 1.45);
+  const collarGeo = new THREE.TorusGeometry(
+    0.088,
+    0.022,
+    10,
+    24,
+    Math.PI * 1.45,
+  );
   const coatBackGeo = new THREE.BoxGeometry(0.32, 0.38, 0.035);
   const coatSideGeo = new THREE.BoxGeometry(0.04, 0.36, 0.2);
   const neckGeo = new THREE.CylinderGeometry(0.046, 0.054, 0.1, 14);
@@ -1589,12 +1615,16 @@ function buildWorld(scene, mats, disposables, isMobile) {
 
     const nodeMesh = new THREE.Mesh(skillNodeGeo, mats.desaturatedBlue);
     const angle = idx * ((Math.PI * 2) / 5);
-    nodeMesh.position.set(Math.cos(angle) * radius, 0, Math.sin(angle) * radius);
+    nodeMesh.position.set(
+      Math.cos(angle) * radius,
+      0,
+      Math.sin(angle) * radius,
+    );
     ringGroup.add(nodeMesh);
 
     const hitMesh = new THREE.Mesh(skillHitGeo, hitMat);
     hitMesh.layers.set(1);
-    hitMesh.userData = { type: 'skill', index: idx };
+    hitMesh.userData = { type: "skill", index: idx };
     ringGroup.add(hitMesh);
     interactiveHitMeshes.push(hitMesh);
 
@@ -1638,7 +1668,7 @@ function buildWorld(scene, mats, disposables, isMobile) {
 
     const hitMesh = new THREE.Mesh(panelHitGeo, hitMat);
     hitMesh.layers.set(1);
-    hitMesh.userData = { type: 'project', index: idx };
+    hitMesh.userData = { type: "project", index: idx };
 
     group.add(backing, glass, topTrim, bottomTrim, hitMesh);
     interactiveHitMeshes.push(hitMesh);
@@ -1741,7 +1771,7 @@ function buildWorld(scene, mats, disposables, isMobile) {
     );
     const hitMesh = new THREE.Mesh(nodeHitGeo, hitMat);
     hitMesh.layers.set(1);
-    hitMesh.userData = { type: 'timeline-year', index: idx };
+    hitMesh.userData = { type: "timeline-year", index: idx };
 
     nGroup.add(nodeMesh, hitMesh);
     interactiveHitMeshes.push(hitMesh);
@@ -1771,7 +1801,7 @@ function buildWorld(scene, mats, disposables, isMobile) {
     topBar.position.y = 0.29;
     const hitMesh = new THREE.Mesh(memHitGeo, hitMat);
     hitMesh.layers.set(1);
-    hitMesh.userData = { type: 'memory', index: i };
+    hitMesh.userData = { type: "memory", index: i };
 
     mGroup.add(pane, topBar, hitMesh);
     interactiveHitMeshes.push(hitMesh);
@@ -1797,7 +1827,7 @@ function buildWorld(scene, mats, disposables, isMobile) {
     positions[i * 3 + 2] = 6 - rand() * 114;
   }
   const particleGeo = new THREE.BufferGeometry();
-  particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  particleGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
   disposables.push(particleGeo);
   const particles = new THREE.Points(particleGeo, mats.particleMat);
   scene.add(particles);
@@ -1878,17 +1908,17 @@ function createAmbientSoundscape() {
     },
   ];
 
-  const toggleBtn = document.getElementById('sound-toggle');
-  const labelEl = document.getElementById('sound-label');
-  const iconOn = document.getElementById('sound-icon-on');
-  const iconOff = document.getElementById('sound-icon-off');
+  const toggleBtn = document.getElementById("sound-toggle");
+  const labelEl = document.getElementById("sound-label");
+  const iconOn = document.getElementById("sound-icon-on");
+  const iconOff = document.getElementById("sound-icon-off");
 
   function updateToggleUI() {
     if (!toggleBtn) return;
-    toggleBtn.setAttribute('aria-pressed', String(isPlaying));
-    if (labelEl) labelEl.textContent = isPlaying ? 'Sound: On' : 'Sound: Off';
-    if (iconOn) iconOn.classList.toggle('hidden', !isPlaying);
-    if (iconOff) iconOff.classList.toggle('hidden', isPlaying);
+    toggleBtn.setAttribute("aria-pressed", String(isPlaying));
+    if (labelEl) labelEl.textContent = isPlaying ? "Sound: On" : "Sound: Off";
+    if (iconOn) iconOn.classList.toggle("hidden", !isPlaying);
+    if (iconOff) iconOff.classList.toggle("hidden", isPlaying);
   }
 
   function createHallImpulse(audioCtx, durationSec) {
@@ -1932,7 +1962,7 @@ function createAmbientSoundscape() {
     masterGain.connect(compressor);
 
     chamberFilter = ctx.createBiquadFilter();
-    chamberFilter.type = 'lowpass';
+    chamberFilter.type = "lowpass";
     chamberFilter.frequency.setValueAtTime(1950, ctx.currentTime);
     chamberFilter.Q.setValueAtTime(0.55, ctx.currentTime);
     chamberFilter.connect(masterGain);
@@ -1945,7 +1975,7 @@ function createAmbientSoundscape() {
     convolver.buffer = createHallImpulse(ctx, 2.6);
 
     const reverbTone = ctx.createBiquadFilter();
-    reverbTone.type = 'lowpass';
+    reverbTone.type = "lowpass";
     reverbTone.frequency.setValueAtTime(1800, ctx.currentTime);
 
     reverbBus = ctx.createGain();
@@ -1975,7 +2005,7 @@ function createAmbientSoundscape() {
     noteGain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
 
     const toneFilter = ctx.createBiquadFilter();
-    toneFilter.type = 'lowpass';
+    toneFilter.type = "lowpass";
     const brightCutoff = Math.min(freq * (3.6 + journeyProgress * 1.4), 2400);
     const warmCutoff = Math.max(freq * 1.55, 320);
     toneFilter.frequency.setValueAtTime(brightCutoff, startTime);
@@ -1990,9 +2020,9 @@ function createAmbientSoundscape() {
     noteGain.connect(reverbBus);
 
     const partials = [
-      { mult: 1, type: 'sine', amp: 0.72, decay: duration },
-      { mult: 2, type: 'sine', amp: 0.22, decay: duration * 0.62 },
-      { mult: 3, type: 'triangle', amp: 0.07, decay: duration * 0.36 },
+      { mult: 1, type: "sine", amp: 0.72, decay: duration },
+      { mult: 2, type: "sine", amp: 0.22, decay: duration * 0.62 },
+      { mult: 3, type: "triangle", amp: 0.07, decay: duration * 0.36 },
     ];
 
     partials.forEach((p) => {
@@ -2014,18 +2044,18 @@ function createAmbientSoundscape() {
     if (!ctx || !stringBedGain) return;
 
     const padFilter = ctx.createBiquadFilter();
-    padFilter.type = 'lowpass';
-    padFilter.frequency.setValueAtTime(
-      520 + journeyProgress * 260,
-      startTime,
-    );
+    padFilter.type = "lowpass";
+    padFilter.frequency.setValueAtTime(520 + journeyProgress * 260, startTime);
     padFilter.Q.setValueAtTime(0.5, startTime);
 
     const env = ctx.createGain();
     env.gain.setValueAtTime(0.0001, startTime);
     env.gain.linearRampToValueAtTime(0.11, startTime + 1.05);
     env.gain.setValueAtTime(0.11, startTime + barDuration - 0.55);
-    env.gain.exponentialRampToValueAtTime(0.0001, startTime + barDuration + 0.85);
+    env.gain.exponentialRampToValueAtTime(
+      0.0001,
+      startTime + barDuration + 0.85,
+    );
 
     padFilter.connect(env);
     env.connect(stringBedGain);
@@ -2034,7 +2064,7 @@ function createAmbientSoundscape() {
       [-4.5, 4.5].forEach((cents) => {
         if (!ctx) return;
         const osc = ctx.createOscillator();
-        osc.type = 'triangle';
+        osc.type = "triangle";
         osc.frequency.setValueAtTime(freq, startTime);
         osc.detune.setValueAtTime(cents, startTime);
         osc.connect(padFilter);
@@ -2099,7 +2129,7 @@ function createAmbientSoundscape() {
     if (!buildGraph() || !ctx || !masterGain) return;
 
     const finishStart = () => {
-      if (!ctx || !masterGain || ctx.state !== 'running') return;
+      if (!ctx || !masterGain || ctx.state !== "running") return;
       cleanupGestureListeners();
       const now = ctx.currentTime;
       masterGain.gain.cancelScheduledValues(now);
@@ -2115,7 +2145,7 @@ function createAmbientSoundscape() {
       updateToggleUI();
     };
 
-    if (ctx.state === 'suspended') {
+    if (ctx.state === "suspended") {
       ctx
         .resume()
         .then(finishStart)
@@ -2139,7 +2169,7 @@ function createAmbientSoundscape() {
     masterGain.gain.linearRampToValueAtTime(0.0001, now + 0.35);
   }
 
-  const gestureEvents = ['pointerdown', 'click', 'keydown', 'touchend'];
+  const gestureEvents = ["pointerdown", "click", "keydown", "touchend"];
 
   function cleanupGestureListeners() {
     gestureEvents.forEach((evt) => {
@@ -2149,7 +2179,7 @@ function createAmbientSoundscape() {
 
   function startOnInteraction(event) {
     const target = event?.target instanceof HTMLElement ? event.target : null;
-    if (target && target.closest('#sound-toggle')) {
+    if (target && target.closest("#sound-toggle")) {
       return;
     }
     if (userMuted || isPlaying) {
@@ -2176,21 +2206,17 @@ function createAmbientSoundscape() {
     const now = ctx.currentTime;
     const cutoff = 1650 + journeyProgress * 750;
     chamberFilter.frequency.setTargetAtTime(cutoff, now, 0.35);
-    stringBedGain.gain.setTargetAtTime(
-      0.38 + journeyProgress * 0.16,
-      now,
-      0.4,
-    );
+    stringBedGain.gain.setTargetAtTime(0.38 + journeyProgress * 0.16, now, 0.4);
   }
 
   if (toggleBtn) {
-    toggleBtn.addEventListener('click', (e) => {
+    toggleBtn.addEventListener("click", (e) => {
       e.stopPropagation();
       toggle();
     });
   }
 
-  document.addEventListener('visibilitychange', () => {
+  document.addEventListener("visibilitychange", () => {
     if (!ctx || !masterGain) return;
     if (document.hidden && isPlaying) {
       stopScheduler();
@@ -2205,8 +2231,11 @@ function createAmbientSoundscape() {
         );
         startScheduler();
       };
-      if (ctx.state === 'suspended') {
-        ctx.resume().then(resumeAndPlay).catch(() => {});
+      if (ctx.state === "suspended") {
+        ctx
+          .resume()
+          .then(resumeAndPlay)
+          .catch(() => {});
       } else {
         resumeAndPlay();
       }
@@ -2228,13 +2257,13 @@ const soundscape = createAmbientSoundscape();
 // ============================================================================
 function detectSoftwareWebGL() {
   try {
-    const canvas = document.createElement('canvas');
-    const gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
+    const canvas = document.createElement("canvas");
+    const gl = canvas.getContext("webgl2") || canvas.getContext("webgl");
     if (!gl) return true;
-    const ext = gl.getExtension('WEBGL_debug_renderer_info');
+    const ext = gl.getExtension("WEBGL_debug_renderer_info");
     const param = ext ? ext.UNMASKED_RENDERER_WEBGL : gl.RENDERER;
-    const gpu = String(gl.getParameter(param) || '');
-    gl.getExtension('WEBGL_lose_context')?.loseContext();
+    const gpu = String(gl.getParameter(param) || "");
+    gl.getExtension("WEBGL_lose_context")?.loseContext();
     return /SwiftShader|llvmpipe|softpipe|Software|Basic Render/i.test(gpu);
   } catch {
     return true;
@@ -2308,10 +2337,10 @@ function initExperience() {
     setLoadingProgress(45);
     renderer = new THREE.WebGLRenderer({
       antialias: !isSoftwareGl,
-      powerPreference: 'high-performance',
+      powerPreference: "high-performance",
     });
   } catch {
-    if (webglFallback) webglFallback.classList.remove('hidden');
+    if (webglFallback) webglFallback.classList.remove("hidden");
     setLoadingProgress(100);
     hideLoadingScreen();
     return;
@@ -2321,14 +2350,16 @@ function initExperience() {
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.08;
   renderer.setPixelRatio(
-    isSoftwareGl ? 1 : Math.min(window.devicePixelRatio, isMobileInit ? 1.5 : 2),
+    isSoftwareGl
+      ? 1
+      : Math.min(window.devicePixelRatio, isMobileInit ? 1.5 : 2),
   );
   renderer.setSize(width, height);
   renderer.shadowMap.enabled = !isSoftwareGl && !isMobileInit;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  renderer.domElement.style.display = 'block';
-  renderer.domElement.style.width = '100%';
-  renderer.domElement.style.height = '100%';
+  renderer.domElement.style.display = "block";
+  renderer.domElement.style.width = "100%";
+  renderer.domElement.style.height = "100%";
 
   if (webglMount) webglMount.appendChild(renderer.domElement);
 
@@ -2391,8 +2422,8 @@ function initExperience() {
     updateActiveSceneUI(SCENES[sceneIdx].id);
   }
 
-  window.addEventListener('scroll', syncScroll, { passive: true });
-  window.addEventListener('resize', () => {
+  window.addEventListener("scroll", syncScroll, { passive: true });
+  window.addEventListener("resize", () => {
     syncScroll();
     const w = webglMount?.clientWidth || window.innerWidth;
     const h = webglMount?.clientHeight || window.innerHeight;
@@ -2406,7 +2437,7 @@ function initExperience() {
     );
   });
 
-  window.addEventListener('pointermove', (event) => {
+  window.addEventListener("pointermove", (event) => {
     const w = window.innerWidth || 1;
     const h = window.innerHeight || 1;
     pointerX = (event.clientX / w) * 2 - 1;
@@ -2442,8 +2473,8 @@ function initExperience() {
         renderMemoryUI();
         changed = true;
       }
-      if (changed) document.body.style.cursor = '';
-      document.body.style.cursor = '';
+      if (changed) document.body.style.cursor = "";
+      document.body.style.cursor = "";
       return;
     }
 
@@ -2453,37 +2484,40 @@ function initExperience() {
 
     if (hits.length > 0) {
       const { type, index } = hits[0].object.userData;
-      if (type !== 'skill' && state.hoveredSkill !== null) {
+      if (type !== "skill" && state.hoveredSkill !== null) {
         state.hoveredSkill = null;
         renderSkillsUI();
       }
-      if (type !== 'project' && state.hoveredProject !== null) {
+      if (type !== "project" && state.hoveredProject !== null) {
         state.hoveredProject = null;
         renderProjectsUI();
       }
-      if (type !== 'timeline-year' && state.hoveredTimelineYear !== null) {
+      if (type !== "timeline-year" && state.hoveredTimelineYear !== null) {
         state.hoveredTimelineYear = null;
         renderTimelineUI();
       }
-      if (type !== 'memory' && state.hoveredMemory !== null) {
+      if (type !== "memory" && state.hoveredMemory !== null) {
         state.hoveredMemory = null;
         renderMemoryUI();
       }
 
-      if (type === 'skill' && state.hoveredSkill !== index) {
+      if (type === "skill" && state.hoveredSkill !== index) {
         state.hoveredSkill = index;
         renderSkillsUI();
-      } else if (type === 'project' && state.hoveredProject !== index) {
+      } else if (type === "project" && state.hoveredProject !== index) {
         state.hoveredProject = index;
         renderProjectsUI();
-      } else if (type === 'timeline-year' && state.hoveredTimelineYear !== index) {
+      } else if (
+        type === "timeline-year" &&
+        state.hoveredTimelineYear !== index
+      ) {
         state.hoveredTimelineYear = index;
         renderTimelineUI();
-      } else if (type === 'memory' && state.hoveredMemory !== index) {
+      } else if (type === "memory" && state.hoveredMemory !== index) {
         state.hoveredMemory = index;
         renderMemoryUI();
       }
-      document.body.style.cursor = 'pointer';
+      document.body.style.cursor = "pointer";
     } else {
       if (state.hoveredSkill !== null) {
         state.hoveredSkill = null;
@@ -2501,11 +2535,11 @@ function initExperience() {
         state.hoveredMemory = null;
         renderMemoryUI();
       }
-      document.body.style.cursor = '';
+      document.body.style.cursor = "";
     }
   });
 
-  window.addEventListener('click', (event) => {
+  window.addEventListener("click", (event) => {
     const targetEl = event.target instanceof HTMLElement ? event.target : null;
     if (
       targetEl &&
@@ -2520,19 +2554,19 @@ function initExperience() {
     const hits = raycaster.intersectObjects(world.interactiveHitMeshes, false);
     if (hits.length > 0) {
       const { type, index } = hits[0].object.userData;
-      if (type === 'skill') {
+      if (type === "skill") {
         state.selectedSkill = index;
         renderSkillsUI();
-      } else if (type === 'project') {
+      } else if (type === "project") {
         state.selectedProject = index;
         renderProjectsUI();
-      } else if (type === 'timeline-year') {
-        state.archiveMode = 'timeline';
+      } else if (type === "timeline-year") {
+        state.archiveMode = "timeline";
         state.selectedTimelineYear = index;
         renderArchiveModeUI();
         renderTimelineUI();
-      } else if (type === 'memory') {
-        state.archiveMode = 'memory';
+      } else if (type === "memory") {
+        state.archiveMode = "memory";
         state.selectedMemory = index;
         renderArchiveModeUI();
         renderMemoryUI();
@@ -2540,23 +2574,23 @@ function initExperience() {
     }
   });
 
-  renderer.domElement.addEventListener('webglcontextlost', (e) => {
+  renderer.domElement.addEventListener("webglcontextlost", (e) => {
     e.preventDefault();
     contextLost = true;
     cancelAnimationFrame(frameId);
     clearTimeout(frameId);
-    if (webglFallback) webglFallback.classList.remove('hidden');
+    if (webglFallback) webglFallback.classList.remove("hidden");
   });
 
-  renderer.domElement.addEventListener('webglcontextrestored', () => {
+  renderer.domElement.addEventListener("webglcontextrestored", () => {
     contextLost = false;
-    if (webglFallback) webglFallback.classList.add('hidden');
+    if (webglFallback) webglFallback.classList.add("hidden");
     tick();
   });
 
   function afterDraw(cb) {
     const gl = renderer.getContext();
-    if (!gl || typeof gl.fenceSync !== 'function') {
+    if (!gl || typeof gl.fenceSync !== "function") {
       frameId = window.setTimeout(cb, 80);
       return;
     }
@@ -2628,7 +2662,8 @@ function initExperience() {
     figure.root.position.set(figX, 0, figZ);
 
     const scrollVelocity = Math.abs(smoothedProgress - prevSmoothed) * 65;
-    walkPhase += (0.95 + Math.min(scrollVelocity * 3.5, 4.0)) * delta * motionScale;
+    walkPhase +=
+      (0.95 + Math.min(scrollVelocity * 3.5, 4.0)) * delta * motionScale;
     figure.updateWalkCycle(walkPhase, motionScale);
 
     followLight.position.set(figX + 4.5, 9, figZ - 6);
@@ -2638,7 +2673,8 @@ function initExperience() {
     world.floatingGeos.forEach((g) => {
       const { baseY, phase } = g.userData;
       g.rotation.y += delta * 0.14 * motionScale;
-      g.position.y = baseY + Math.sin(elapsed * 0.6 + phase) * 0.12 * motionScale;
+      g.position.y =
+        baseY + Math.sin(elapsed * 0.6 + phase) * 0.12 * motionScale;
     });
 
     world.skillStructure.rotation.y += delta * 0.12 * motionScale;
@@ -2652,7 +2688,9 @@ function initExperience() {
         delta,
       );
       ring.group.scale.setScalar(nextScale);
-      ring.accentMesh.material = active ? mats.desaturatedBlue : mats.mutedSilver;
+      ring.accentMesh.material = active
+        ? mats.desaturatedBlue
+        : mats.mutedSilver;
     });
 
     world.projectMonoliths.forEach((panel) => {
@@ -2676,7 +2714,9 @@ function initExperience() {
         delta,
       );
       panel.group.scale.setScalar(nextScale);
-      panel.accentMesh.material = active ? mats.desaturatedBlue : mats.mutedSilver;
+      panel.accentMesh.material = active
+        ? mats.desaturatedBlue
+        : mats.mutedSilver;
     });
 
     world.timelineNodes.forEach((node) => {
@@ -2714,7 +2754,9 @@ function initExperience() {
         delta,
       );
       mem.group.scale.setScalar(nextScale);
-      mem.accentMesh.material = active ? mats.desaturatedBlue : mats.mutedSilver;
+      mem.accentMesh.material = active
+        ? mats.desaturatedBlue
+        : mats.mutedSilver;
     });
 
     world.particles.rotation.z = Math.sin(elapsed * 0.08) * 0.025 * motionScale;
@@ -2728,7 +2770,11 @@ function initExperience() {
     rimLight.color.lerpColors(rimColorStart, rimColorEnd, smoothedProgress);
     rimLight.intensity = THREE.MathUtils.lerp(0.75, 1.05, smoothedProgress);
     portalLight.intensity = THREE.MathUtils.lerp(12, 28, smoothedProgress);
-    mats.volumetricBeam.opacity = THREE.MathUtils.lerp(0.32, 0.58, smoothedProgress);
+    mats.volumetricBeam.opacity = THREE.MathUtils.lerp(
+      0.32,
+      0.58,
+      smoothedProgress,
+    );
 
     soundscape.setJourneyDepth(smoothedProgress);
 
@@ -2758,46 +2804,48 @@ renderMemoryUI();
 renderVisitorUI();
 initPanelVisibilityObserver();
 
-const modeTimelineBtn = document.getElementById('mode-timeline-btn');
-const modeMemoryBtn = document.getElementById('mode-memory-btn');
+const modeTimelineBtn = document.getElementById("mode-timeline-btn");
+const modeMemoryBtn = document.getElementById("mode-memory-btn");
 if (modeTimelineBtn && modeMemoryBtn) {
-  modeTimelineBtn.addEventListener('click', () => {
-    state.archiveMode = 'timeline';
+  modeTimelineBtn.addEventListener("click", () => {
+    state.archiveMode = "timeline";
     renderArchiveModeUI();
   });
-  modeMemoryBtn.addEventListener('click', () => {
-    state.archiveMode = 'memory';
+  modeMemoryBtn.addEventListener("click", () => {
+    state.archiveMode = "memory";
     renderArchiveModeUI();
   });
 }
 
-document.addEventListener('click', (event) => {
+document.addEventListener("click", (event) => {
   const target = event.target instanceof HTMLElement ? event.target : null;
-  const navBtn = target?.closest('[data-nav]');
+  const navBtn = target?.closest("[data-nav]");
   if (navBtn) {
-    const dest = navBtn.getAttribute('data-nav');
+    const dest = navBtn.getAttribute("data-nav");
     if (dest) navigateToScene(dest);
   }
 });
 
 if (mobileToggle && mobileNav) {
-  mobileToggle.addEventListener('click', () => {
-    const isOpen = mobileNav.classList.toggle('hidden') === false;
-    mobileToggle.setAttribute('aria-expanded', String(isOpen));
+  mobileToggle.addEventListener("click", () => {
+    const isOpen = mobileNav.classList.toggle("hidden") === false;
+    mobileToggle.setAttribute("aria-expanded", String(isOpen));
   });
 }
 
 window
-  .matchMedia('(prefers-reduced-motion: reduce)')
-  .addEventListener('change', (e) => {
+  .matchMedia("(prefers-reduced-motion: reduce)")
+  .addEventListener("change", (e) => {
     state.reducedMotion = e.matches;
     if (e.matches && state.activeSceneId) {
-      const activePanel = document.getElementById(`panel-${state.activeSceneId}`);
-      if (activePanel && !activePanel.hasAttribute('hidden')) {
+      const activePanel = document.getElementById(
+        `panel-${state.activeSceneId}`,
+      );
+      if (activePanel && !activePanel.hasAttribute("hidden")) {
         activePanel.classList.add(
-          'is-visible',
-          'is-answer-revealed',
-          'is-content-revealed',
+          "is-visible",
+          "is-answer-revealed",
+          "is-content-revealed",
         );
       }
     }
